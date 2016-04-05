@@ -2,7 +2,7 @@ import csv
 import sqlite3
 import math
 from datetime import datetime
-INPUT_FILENAME = "D://Gool/dd22.nmea"
+INPUT_FILENAME = "D://dd22.nmea"
 with open(INPUT_FILENAME, 'r') as input_file:
     reader = csv.reader(input_file)
     conn = sqlite3.connect('nmea_to_db.db')
