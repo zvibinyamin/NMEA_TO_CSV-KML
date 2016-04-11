@@ -36,6 +36,10 @@ with open(INPUT_FILENAME, 'r') as input_file:
             warning = row[2]
             if warning == 'V':
                 continue
+            date_and_time = datetime.strptime(date + ' ' + time, '%d%m%y %H%M%S.%f');
+            date_and_time = date_and_time.strftime('%y-%m-%d %H:%M:%S.%f')[:-3];
+            date = date_and_time[0:8];
+            time = date_and_time[8:];
             c.execute("INSERT INTO info VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",(date,time,speed, latitude, lat_direction, longitude, lon_direction,fix,horizontal,altitude,direct_altitude,altitude_location))
         # Save (commit) the changes
             conn.commit()
