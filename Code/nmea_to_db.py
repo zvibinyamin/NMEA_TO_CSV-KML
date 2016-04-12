@@ -18,7 +18,7 @@ with open(INPUT_FILENAME, 'r') as input_file:
         # skip all lines that do not start with $GPGGA
         if not row:
             continue
-        elif row[0].startswith('$GPGGA') and row[6]=='1':
+        elif row[0].startswith('$GPGGA') and not row[6]=='0':
             time = row[1]
             latitude = row[2]
             lat_direction = row[3]
