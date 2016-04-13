@@ -1,7 +1,7 @@
 import sqlite3
 import csv
 
-file_name= open("to_csv.csv","w")
+file_name= open('to_csv.csv','w',)
 c=csv.writer(file_name)
 
 c.writerow(['date','time','speed', 'latitude', 'lat_direction', 'longitude', 'lon_direction','fix','horizontal','altitude','direct_altitude','altitude_location'])
