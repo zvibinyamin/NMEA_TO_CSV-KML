@@ -13,11 +13,85 @@ def DropTable(event):
     c.execute('''CREATE TABLE info
                             (fileName text,date text,time text,speed float, latitude text, latitude_direction text, longitude text, longitude_direction text,fix text,horizontal_dilution text,altitude text,direct_of_altitude text,altitude_location text)''')
 
-def ToCSV(event):
-    print("to csv")
+def DBToCSV(event):
+    print("DB to csv")
+    INPUT_FILE = "nmea_to_db.db"
+    OUTPUT_FILE = "nmea_to_csv.csv"
 
-def ToKML(event):
-    print("to kml")
+    file_name = open(OUTPUT_FILE, 'w', newline='')
+    c = csv.writer(file_name)
+
+    c.writerow(
+        ['fileName','Date', 'Time', 'Speed', 'Latitude', 'Lat_direction', 'Longitude', 'Lon_direction', 'Fix', 'Horizontal',
+         'Altitude', 'Direct_altitude', 'Altitude_location'])
+
+    connection = sqlite3.connect(INPUT_FILE)
+
+    cursor = connection.cursor()
+
+    cursor.execute('SELECT * FROM info')
+
+    result = cursor.fetchall()
+
+    for r in result:
+        c.writerow(r)
+
+    cursor.close()
+    file_name.close()
+    connection.close()
+
+def DBToKML(event):
+    print("DB to kml")
+    InputFile = "nmea_to_db.db"
+    OutputFile = "nmea_to_kml.kml"
+    connection = sqlite3.connect(InputFile)
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM info")
+    result = cursor.fetchall()
+    f = open(OutputFile, "w")
+
+    # Writing the kml file.
+    f.write("<?xml version='1.0' encoding='UTF-8'?>\n")
+    f.write("<kml xmlns='http://earth.google.com/kml/2.1'>\n")
+    f.write("<Document>\n")
+    f.write("   <name>" + 'to_kml' + '.kml' + "</name>\n")
+    for row in result:
+        f.write("   <Placemark>\n")
+        f.write("       <name>" + str(row[1]) + "</name>\n")
+        f.write("       <description>" + str(row[0]) + "</description>\n")
+        day = str(row[1][:2])
+        month = str(row[1][2:4])
+        year = str(row[1][4:6])
+
+        if (year.isdigit() & int(year) > 30):
+            Date = "19" + year + "-" + month + "-" + day
+        else:
+            Date = "20" + year + "-" + month + "-" + day
+
+        hour = str(row[2][:2])
+        minute = str(row[2][2:4])
+        second = str(row[2][4:6])
+        Time = hour + ":" + minute + ":" + second
+        f.write("  <TimeStamp>\n" + "<when>" + Date + "T" + Time + "Z</when> \n</TimeStamp>\n")
+        f.write("       <Point>\n")
+        # print("lat=" + row[3])
+        # print("lon=" + row[5])
+        lon = str(float(row[6][:3]) + (float(row[6][3:]) / 60))
+        lat = str(float(row[4][:2]) + (float(row[4][2:]) / 60))
+        #  print(lat)
+        #  print(lon)
+        a = float(row[6]) / 100
+        b = float(row[4]) / 100
+        f.write("           <coordinates>" + lon + "," + lat + "," + str(row[9]) + "</coordinates>\n")
+        f.write("       </Point>\n")
+        f.write("   </Placemark>\n")
+    f.write("</Document>\n")
+    f.write("</kml>\n")
+
+    cursor.close()
+    f.close()
+    connection.close()
+
 
 def UploadFile(event):
     print("There will be a code file uploads")
@@ -110,8 +184,8 @@ def filteringFiles(event):
     button5.pack()
 
 
-    button5.bind('<Button>', ToKML)
-    button4.bind('<Button>', ToCSV)
+    button5.bind('<Button>', DBToKML)
+    button4.bind('<Button>', DBToCSV)
 
 # create database
 conn = sqlite3.connect('nmea_to_db.db')
