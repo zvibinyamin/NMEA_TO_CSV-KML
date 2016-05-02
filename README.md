@@ -22,11 +22,19 @@ Once the program is running will be two main buttons:
 ----------
 Sources:
 
-nmea_to_csv - https://github.com/splosch/nmea_to_csv 
+http://www.gpsinformation.org/dale/nmea.htm
 
-nmea2kml - https://github.com/c-yan/nmea2kml
+https://github.com/joabakk/Dynamic-NMEA-polar-diagram 
 
-Mysql to csv - https://github.com/elcio/mysql2csv
+https://github.com/elcio/mysql2csv 
 
-CSV_To_MySQL - https://github.com/nazcompile/CSV_To_MySQL
+https://www.youtube.com/watch?v=B5XTGyfFmtc 
+
+----------
+
+This project is provided by:
+
+Daniel Fuchs, Sapir Ankri, Akiva Gubbay and Zvika Binyamin.
+
+
 
