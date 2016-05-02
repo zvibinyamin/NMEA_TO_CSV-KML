@@ -2,6 +2,8 @@
 # write tkinter as Tkinter to be Python 2.x compatible
 from tkinter import *
 
+import os
+import os.path
 import csv
 import sqlite3
 import tkinter as tk
@@ -11,21 +13,20 @@ def DropTable(event):
     c.execute('DROP TABLE IF EXISTS info')
     # Create table
     c.execute('''CREATE TABLE info
-                            (fileName text,date text,time text,speed float, latitude text, latitude_direction text, longitude text, longitude_direction text,fix text,horizontal_dilution text,altitude text,direct_of_altitude text,altitude_location text)''')
+                            (fileName text,date date,time time,speed float, latitude text, latitude_direction text, longitude text, longitude_direction text,fix text,horizontal_dilution text,altitude text,direct_of_altitude text,altitude_location text)''')
 
 def DBToCSV(event):
     print("DB to csv")
-    INPUT_FILE = "nmea_to_db.db"
-    OUTPUT_FILE = "nmea_to_csv.csv"
+    print(date1_Entry.__str__())
 
-    file_name = open(OUTPUT_FILE, 'w', newline='')
+    file_name = open(CSV_FILE, 'w', newline='')
     c = csv.writer(file_name)
 
     c.writerow(
         ['fileName','Date', 'Time', 'Speed', 'Latitude', 'Lat_direction', 'Longitude', 'Lon_direction', 'Fix', 'Horizontal',
          'Altitude', 'Direct_altitude', 'Altitude_location'])
 
-    connection = sqlite3.connect(INPUT_FILE)
+    connection = sqlite3.connect(DB_New_name)
 
     cursor = connection.cursor()
 
@@ -42,13 +43,11 @@ def DBToCSV(event):
 
 def DBToKML(event):
     print("DB to kml")
-    InputFile = "nmea_to_db.db"
-    OutputFile = "nmea_to_kml.kml"
-    connection = sqlite3.connect(InputFile)
+    connection = sqlite3.connect(DB_New_name)
     cursor = connection.cursor()
     cursor.execute("SELECT * FROM info")
     result = cursor.fetchall()
-    f = open(OutputFile, "w")
+    f = open(KML_File, "w")
 
     # Writing the kml file.
     f.write("<?xml version='1.0' encoding='UTF-8'?>\n")
@@ -59,20 +58,21 @@ def DBToKML(event):
         f.write("   <Placemark>\n")
         f.write("       <name>" + str(row[1]) + "</name>\n")
         f.write("       <description>" + str(row[0]) + "</description>\n")
-        day = str(row[1][:2])
-        month = str(row[1][2:4])
-        year = str(row[1][4:6])
+        # day = str(row[1][:2])
+        # month = str(row[1][2:4])
+        # year = str(row[1][4:6])
 
-        if (year.isdigit() & int(year) > 30):
-            Date = "19" + year + "-" + month + "-" + day
-        else:
-            Date = "20" + year + "-" + month + "-" + day
+        # if (year.isdigit() & int(year) > 30):
+        #     Date = "19" + year + "-" + month + "-" + day
+        # else:
+        #     Date = "20" + year + "-" + month + "-" + day
 
-        hour = str(row[2][:2])
-        minute = str(row[2][2:4])
-        second = str(row[2][4:6])
-        Time = hour + ":" + minute + ":" + second
-        f.write("  <TimeStamp>\n" + "<when>" + Date + "T" + Time + "Z</when> \n</TimeStamp>\n")
+        # hour = str(row[2][:2])
+        # minute = str(row[2][2:4])
+        # second = str(row[2][4:6])
+        # Time = hour + ":" + minute + ":" + second
+        Time = row[2]
+        f.write("  <TimeStamp>\n" + "<when>" + str(row[1]) + "T" + str(Time) + "Z</when> \n</TimeStamp>\n")
         f.write("       <Point>\n")
         # print("lat=" + row[3])
         # print("lon=" + row[5])
@@ -92,15 +92,14 @@ def DBToKML(event):
     f.close()
     connection.close()
 
-
 def UploadFile(event):
     print("There will be a code file uploads")
 
     file_path = filedialog.askopenfilename()
 
     # create database
-    with open(file_path, 'r') as input_file:
-        reader = csv.reader(input_file)
+    with open(file_path, 'r') as DB_name:
+        reader = csv.reader(DB_name)
         # flag will tell us if the GPGGA is good if yes continue to the GPRMC
         flag = 0
     # create a csv reader object from the input file (nmea files are basically csv)
@@ -135,31 +134,30 @@ def UploadFile(event):
             else:
                 continue
 
+def UI_filter(event):
+    # c.execute('SELECT * INTO zvika IN \'Backup.db\' FROM info')
+    # c.execute('CREATE TABLE copied AS SELECT * FROM info')
 
-def filteringFiles(event):
+
     print("exit from this ui")
     button2.destroy()
     button1.destroy()
+    button3.destroy()
 
     conn.close()
-
-    date1_button = Button(None, text='from date: (like: "1/1/1990")')
-    date1_button.pack()
+    Label(None, text='from date: (like: "1/1/1990")').pack()
     date1_Entry = Entry(None, text='')
     date1_Entry.pack()
 
-    date2_button = Button(None, text='until date: (like: "12/12/2020")')
-    date2_button.pack()
+    Label(None, text='until date: (like: "12/12/2020")').pack()
     date2_Entry = Entry(None, text='')
     date2_Entry.pack()
 
-    hour1_button = Button(None, text='from hour: (like: "08:03:01")')
-    hour1_button.pack()
+    Label(None, text='from hour: (like: "08:03:01")').pack()
     hour1_Entry = Entry(None, text='')
     hour1_Entry.pack()
 
-    hour2_button = Button(None, text='until hour: (like: "18:59:07")')
-    hour2_button.pack()
+    Label(None, text='until hour: (like: "18:59:07")').pack()
     hour2_Entry = Entry(None, text='')
     hour2_Entry.pack()
 
@@ -168,8 +166,10 @@ def filteringFiles(event):
 
     Checkbutton1 = Checkbutton(None, text="show date?")
     Checkbutton1.pack()
+
     Checkbutton2 = Checkbutton(None, text="show time?")
     Checkbutton2.pack()
+
     Checkbutton3 = Checkbutton(None, text="show speed?")
     Checkbutton3.pack()
     Checkbutton4 = Checkbutton(None, text="show latitude?")
@@ -183,12 +183,24 @@ def filteringFiles(event):
     button5 = Button(None, text='save to KML')
     button5.pack()
 
-
     button5.bind('<Button>', DBToKML)
     button4.bind('<Button>', DBToCSV)
 
+DB_name = "nmea_db.db"
+DB_New_name = "nmea_db.db"
+# DB_New_name = "db_filter.db"
+CSV_FILE = "nmea_to_csv.csv"
+KML_File = "nmea_to_kml.kml"
+
+if os.path.isfile(DB_name) and os.access(DB_name, os.R_OK):
+    print("File exists and is readable")
+else:
+    print("Either file is missing or is not readable")
+    DropTable
+    print("Create new DB")
+
 # create database
-conn = sqlite3.connect('nmea_to_db.db')
+conn = sqlite3.connect(DB_name)
 c = conn.cursor()
 
 button3 = Button(None, text='Drop Table')
@@ -204,5 +216,7 @@ button2.pack()
 
 button1.bind('<Button>', UploadFile)
 button3.bind('<Button>', DropTable)
-button2.bind('<Button>', filteringFiles)
+button2.bind('<Button>', UI_filter)
+date1_Entry = ""
+
 button1.mainloop()
