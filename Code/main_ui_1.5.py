@@ -15,9 +15,20 @@ def DropTable(event):
     c.execute('''CREATE TABLE info
                             (fileName text,date date,time time,speed float, latitude text, latitude_direction text, longitude text, longitude_direction text,fix text,horizontal_dilution text,altitude text,direct_of_altitude text,altitude_location text)''')
 
+def show_var(event):
+    print("\n----\nfromDate " + fromDate.get())
+    print("untilDate " + untilDate.get())
+    print("fromTime " + fromTime.get())
+    print("untilTime " + untilTime.get())
+    print("fromSpeed " + fromSpeed.get())
+    print("untilSpeed " + untilSpeed.get())
+
+    print("show date? " + str(show1.get()))
+    print("show time? " + str(show2.get()))
+    print("show speed? " + str(show3.get()))
+
 def DBToCSV(event):
     print("DB to csv")
-    print(date1_Entry.__str__())
 
     file_name = open(CSV_FILE, 'w', newline='')
     c = csv.writer(file_name)
@@ -30,7 +41,29 @@ def DBToCSV(event):
 
     cursor = connection.cursor()
 
-    cursor.execute('SELECT * FROM info')
+    # cursor.execute('SELECT * FROM info')
+
+    str = 'SELECT * FROM info where 1==1'
+    if (len(fromDate.get()) > 5):
+        str += " and date > " + fromDate.get()
+
+    if (len(untilDate.get()) > 5):
+        str += " and date < " + untilDate.get()
+
+    if (len(fromTime.get()) > 4):
+        str += " and time > " + fromTime.get()
+
+    if (len(untilTime.get()) > 4):
+        str += " and time < " + untilTime.get()
+
+    if (len(fromSpeed.get()) > 0):
+        str += " and speed > " + fromSpeed.get()
+
+    if (len(untilSpeed.get()) > 0):
+        str += " and speed < " + untilSpeed.get()
+
+    print(str)
+    cursor.execute(str)
 
     result = cursor.fetchall()
 
@@ -45,7 +78,31 @@ def DBToKML(event):
     print("DB to kml")
     connection = sqlite3.connect(DB_New_name)
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM info")
+
+    # cursor.execute('SELECT * FROM info')
+
+    str1 = 'SELECT * FROM info where 1==1'
+    if (len(fromDate.get()) > 5):
+        str1 += " and date > " + fromDate.get()
+
+    if (len(untilDate.get()) > 5):
+        str1 += " and date < " + untilDate.get()
+
+    if (len(fromTime.get()) > 4):
+        str1 += " and time > " + fromTime.get()
+
+    if (len(untilTime.get()) > 4):
+        str1 += " and time < " + untilTime.get()
+
+    if (len(fromSpeed.get()) > 0):
+        str1 += " and speed > " + fromSpeed.get()
+
+    if (len(untilSpeed.get()) > 0):
+        str1 += " and speed < " + untilSpeed.get()
+
+    print(str1)
+    cursor.execute(str1)
+
     result = cursor.fetchall()
     f = open(KML_File, "w")
 
@@ -54,25 +111,39 @@ def DBToKML(event):
     f.write("<kml xmlns='http://earth.google.com/kml/2.1'>\n")
     f.write("<Document>\n")
     f.write("   <name>" + 'to_kml' + '.kml' + "</name>\n")
+    num =0
     for row in result:
+        num +=1
+        rowStr = str(row[1])
+        day = str(rowStr[:2])
+        month = str(rowStr[2:4])
+        year = str(rowStr[4:6])
+
+        if (year.isdigit() & int(year) > 30):
+            Date = "19" + year + "-" + month + "-" + day
+        else:
+            Date = "20" + year + "-" + month + "-" + day
+
+        rowStr = str(row[2])
+        hour = str(rowStr[:2])
+        minute = str(rowStr[2:4])
+        second = str(rowStr[4:6])
+        Time = hour + ":" + minute + ":" + second
+
         f.write("   <Placemark>\n")
-        f.write("       <name>" + str(row[1]) + "</name>\n")
-        f.write("       <description>" + str(row[0]) + "</description>\n")
-        # day = str(row[1][:2])
-        # month = str(row[1][2:4])
-        # year = str(row[1][4:6])
+        f.write("       <name> point_" + str(num) + "</name>")
+        f.write("\n       <description>")
+        f.write("\n           <p>Date:" + Date + "</p>")
+        f.write("\n           <p>Time:" +  str(Time) + "</p>")
+        f.write("\n           <p>Speed: " + str(row[3]) + "</p>")
+        f.write("\n           <p>Location: " + str(row[4]) + str(row[5]) + " " + str(row[6]) + str(row[7]) + "</p>")
+        f.write("\n           <p>file_name: "+str(row[0])+"</p>")
+        f.write("\n       </description>")
+        #f.write("       <description>" + str(row[0]) + "</description>\n")
 
-        # if (year.isdigit() & int(year) > 30):
-        #     Date = "19" + year + "-" + month + "-" + day
-        # else:
-        #     Date = "20" + year + "-" + month + "-" + day
-
-        # hour = str(row[2][:2])
-        # minute = str(row[2][2:4])
-        # second = str(row[2][4:6])
-        # Time = hour + ":" + minute + ":" + second
-        Time = row[2]
-        f.write("  <TimeStamp>\n" + "<when>" + str(row[1]) + "T" + str(Time) + "Z</when> \n</TimeStamp>\n")
+        # Time = row[2]
+        # f.write("  <TimeStamp>\n" + "<when>" + str(row[1]) + "T" + str(Time) + "Z</when> \n</TimeStamp>\n")
+        f.write("\n       <TimeStamp>" + "\n         <when>" + Date + "T" + str(Time) + "Z</when>\n         </TimeStamp>\n")
         f.write("       <Point>\n")
         # print("lat=" + row[3])
         # print("lon=" + row[5])
@@ -137,45 +208,52 @@ def UploadFile(event):
 def UI_filter(event):
     # c.execute('SELECT * INTO zvika IN \'Backup.db\' FROM info')
     # c.execute('CREATE TABLE copied AS SELECT * FROM info')
-
-
     print("exit from this ui")
     button2.destroy()
     button1.destroy()
     button3.destroy()
 
+
     conn.close()
     Label(None, text='from date: (like: "1/1/1990")').pack()
-    date1_Entry = Entry(None, text='')
+    date1_Entry = Entry(None, text='', textvariable=fromDate)
     date1_Entry.pack()
 
+
     Label(None, text='until date: (like: "12/12/2020")').pack()
-    date2_Entry = Entry(None, text='')
+    date2_Entry = Entry(None, text='', textvariable=untilDate)
     date2_Entry.pack()
 
-    Label(None, text='from hour: (like: "08:03:01")').pack()
-    hour1_Entry = Entry(None, text='')
+    Label(None, text='\nfrom hour: (like: "08:03:01")').pack()
+    hour1_Entry = Entry(None, text='', textvariable=fromTime)
     hour1_Entry.pack()
 
     Label(None, text='until hour: (like: "18:59:07")').pack()
-    hour2_Entry = Entry(None, text='')
+    hour2_Entry = Entry(None, text='', textvariable=untilTime)
     hour2_Entry.pack()
 
-    Text1 = LabelFrame(None, text="show?")
+    Label(None, text='\nfrom speed: (like: "0.1")').pack()
+    Speed1_Entry = Entry(None, text='', textvariable=fromSpeed)
+    Speed1_Entry.pack()
+
+    Label(None, text='until speed: (like: "7.45")').pack()
+    Speed2_Entry = Entry(None, text='', textvariable=untilSpeed)
+    Speed2_Entry.pack()
+
+    Text1 = LabelFrame(None, text="\nshow?")
     Text1.pack()
 
-    Checkbutton1 = Checkbutton(None, text="show date?")
+
+    Checkbutton1 = Checkbutton(None, text="show date?", variable = show1)
     Checkbutton1.pack()
 
-    Checkbutton2 = Checkbutton(None, text="show time?")
+    Checkbutton2 = Checkbutton(None, text="show time?", variable = show2)
     Checkbutton2.pack()
 
-    Checkbutton3 = Checkbutton(None, text="show speed?")
+    Checkbutton3 = Checkbutton(None, text="show speed?", variable = show3)
     Checkbutton3.pack()
-    Checkbutton4 = Checkbutton(None, text="show latitude?")
-    Checkbutton4.pack()
-    Checkbutton5 = Checkbutton(None, text="show lat_direction?")
-    Checkbutton5.pack()
+
+    Label(None, text='\n').pack()
 
     button4 = Button(None, text='save to CSV')
     button4.pack()
@@ -186,37 +264,59 @@ def UI_filter(event):
     button5.bind('<Button>', DBToKML)
     button4.bind('<Button>', DBToCSV)
 
+
+
+    Label(None, text='\n').pack()
+    button_temp = Button(None, text='show var')
+    button_temp.pack()
+    button_temp.bind('<Button>', show_var)
+
 DB_name = "nmea_db.db"
 DB_New_name = "nmea_db.db"
 # DB_New_name = "db_filter.db"
 CSV_FILE = "nmea_to_csv.csv"
 KML_File = "nmea_to_kml.kml"
 
-if os.path.isfile(DB_name) and os.access(DB_name, os.R_OK):
-    print("File exists and is readable")
+if (os.path.isfile(DB_name) == 0):
+    # create database
+    conn = sqlite3.connect(DB_name)
+    c = conn.cursor()
+    c.execute('DROP TABLE IF EXISTS info')
+    # Create table
+    c.execute('''CREATE TABLE info
+                        (fileName text,date date,time time,speed float, latitude text, latitude_direction text, longitude text, longitude_direction text,fix text,horizontal_dilution text,altitude text,direct_of_altitude text,altitude_location text)''')
 else:
-    print("Either file is missing or is not readable")
-    DropTable
-    print("Create new DB")
+    # create database
+    conn = sqlite3.connect(DB_name)
+    c = conn.cursor()
 
-# create database
-conn = sqlite3.connect(DB_name)
-c = conn.cursor()
-
-button3 = Button(None, text='Drop Table')
-button3.pack()
 
 button1 = Button(None, text='Upload file')
 button1.pack()
-
-
-button2 = Button(None, text ="Go to step filtering files")
+button2 = Button(None, text ="Continue to the next step - Data filtering")
 button2.pack()
 
+Label1 = Label(None, text='\n').pack()
+
+button3 = Button(None, text='Clear DB')
+button3.pack()
+
+fromDate = StringVar()
+untilDate = StringVar()
+fromTime = StringVar()
+untilTime = StringVar()
+fromSpeed = StringVar()
+untilSpeed = StringVar()
+show1 = IntVar()
+show2 = IntVar()
+show3 = IntVar()
 
 button1.bind('<Button>', UploadFile)
 button3.bind('<Button>', DropTable)
 button2.bind('<Button>', UI_filter)
-date1_Entry = ""
+
+# v= StringVar()
+# Entry11 = Entry(None, text='', textvariable=v)
+# Entry11.pack()
 
 button1.mainloop()
