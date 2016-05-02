@@ -7,6 +7,8 @@ Instructions:
 
 
 
+
+
 Once the program is running will be two main buttons:
 
 1. "Upload file" - button allows you to get your NMEA
