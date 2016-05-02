@@ -5,9 +5,7 @@ Instructions:
 
 2. Run the file using python: "Code\main_ui_1.5.py"
 
-
-
-
+----------
 
 Once the program is running will be two main buttons:
 
@@ -21,7 +19,8 @@ Once the program is running will be two main buttons:
 4. Save the data by clicking on the "save to CSV" or the button "save to KML"
 
 
-
+----------
+Sources:
 
 nmea_to_csv - https://github.com/splosch/nmea_to_csv 
 
