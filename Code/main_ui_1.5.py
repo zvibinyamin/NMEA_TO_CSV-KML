@@ -50,16 +50,16 @@ def DBToCSV(event):
         str1 += " and fileName LIKE  \"%" + fileNameVar.get()+"\""
 
     if (len(fromDate.get()) > 5):
-        str1 += " and date > " + fromDate.get()
+        str1 += " and date > \'" + fromDate.get() + "\'"
 
     if (len(untilDate.get()) > 5):
-        str1 += " and date < " + untilDate.get()
+        str1 += " and date < \'" + untilDate.get() + "\'"
 
     if (len(fromTime.get()) > 4):
-        str1 += " and time > " + fromTime.get()
+        str1 += " and time > \'" + fromTime.get() + "\'"
 
     if (len(untilTime.get()) > 4):
-        str1 += " and time < " + untilTime.get()
+        str1 += " and time < \'" + untilTime.get() + "\'"
 
     if (len(fromSpeed.get()) > 0):
         str1 += " and speed > " + fromSpeed.get()
@@ -87,6 +87,8 @@ def DBToKML(event):
 
     # cursor.execute('SELECT * FROM info')
     str1 = 'SELECT * FROM info where 1==1'
+
+
     if (len(fromDate.get()) > 5):
         str1 += " and date > " + fromDate.get()
 
@@ -94,10 +96,10 @@ def DBToKML(event):
         str1 += " and date < " + untilDate.get()
 
     if (len(fromTime.get()) > 4):
-        str1 += " and time > " + fromTime.get()
+        str1 += " and time > \'" + fromTime.get() + "\'"
 
     if (len(untilTime.get()) > 4):
-        str1 += " and time < " + untilTime.get()
+        str1 += " and time < \'" + untilTime.get() + "\'"
 
     if (len(fromSpeed.get()) > 0):
         str1 += " and speed > " + fromSpeed.get()
@@ -121,19 +123,11 @@ def DBToKML(event):
         num +=1
         rowStr = str(row[1])
         day = str(rowStr[:2])
-        month = str(rowStr[2:4])
-        year = str(rowStr[4:6])
+        month = str(rowStr[3:5])
+        year = str(rowStr[6:10])
+        Date = year + "-" + month + "-" + day
 
-        if (year.isdigit() & int(year) > 30):
-            Date = "19" + year + "-" + month + "-" + day
-        else:
-            Date = "20" + year + "-" + month + "-" + day
-
-        rowStr = str(row[2])
-        hour = str(rowStr[:2])
-        minute = str(rowStr[2:4])
-        second = str(rowStr[4:6])
-        Time = hour + ":" + minute + ":" + second
+        Time = str(row[2])
 
         f.write("   <Placemark>\n")
         f.write("       <name> point_" + str(num) + "</name>")
@@ -179,7 +173,12 @@ def UploadFile(event):
             if not row:
                 continue
             elif row[0].startswith('$GPGGA') and not row[6] == '0':
-                time = row[1];
+                rowStr = str(row[1])
+                hour = str(rowStr[:2])
+                minute = str(rowStr[2:4])
+                second = str(rowStr[4:6])
+                time = hour + ":" + minute + ":" + second
+                # time = row[1];
                 latitude = row[2]
                 lat_direction = row[3]
                 longitude = row[4]
@@ -192,7 +191,17 @@ def UploadFile(event):
                 flag = 1
             elif row[0].startswith('$GPRMC') and flag == 1:
                 speed = row[7]
-                date = row[9]
+                # date = row[9]
+                rowStr = str(row[9])
+                day = str(rowStr[:2])
+                month = str(rowStr[2:4])
+                year = str(rowStr[4:6])
+
+                if (year.isdigit() & int(year) > 30):
+                    date = day + "/" + month + "/19" + year
+                else:
+                    date = day + "/" + month + "/20" + year
+
                 warning = row[2]
                 if warning == 'V':
                     continue
