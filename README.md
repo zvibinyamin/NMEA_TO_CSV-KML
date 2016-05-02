@@ -7,6 +7,7 @@ And view them using google earth or excel (CSV or KML accordingly)
 ----------
 
 Instructions:
+=============
 
 1. Download Folder Code
 
@@ -15,6 +16,7 @@ Instructions:
 ----------
 
 Once the program is running will be two main buttons:
+=============
 
 1. "Upload file" - button allows you to get your NMEA
 (You can use the following sample files: "Examples/nmea files")
@@ -28,6 +30,7 @@ Once the program is running will be two main buttons:
 
 ----------
 Sources:
+=============
 
 http://www.gpsinformation.org/dale/nmea.htm
 
@@ -40,6 +43,7 @@ https://www.youtube.com/watch?v=B5XTGyfFmtc
 ----------
 
 This project is provided by:
+=============
 
 Daniel Fuchs, Sapir Ankri, Akiva Gubbay and Zvika Binyamin.
 
