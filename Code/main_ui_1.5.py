@@ -37,37 +37,37 @@ def DBToCSV(event):
         ['fileName','Date', 'Time', 'Speed', 'Latitude', 'Lat_direction', 'Longitude', 'Lon_direction', 'Fix', 'Horizontal',
          'Altitude', 'Direct_altitude', 'Altitude_location'])
 
-    connection = sqlite3.connect(DB_New_name)
+    connection = sqlite3.connect(DB_name)
 
     cursor = connection.cursor()
 
     # cursor.execute('SELECT * FROM info')
-
-    str = 'SELECT * FROM info where 1==1'
+    str1 = 'SELECT * FROM info where 1==1'
     if (len(fromDate.get()) > 5):
-        str += " and date > " + fromDate.get()
+        str1 += " and date > " + fromDate.get()
 
     if (len(untilDate.get()) > 5):
-        str += " and date < " + untilDate.get()
+        str1 += " and date < " + untilDate.get()
 
     if (len(fromTime.get()) > 4):
-        str += " and time > " + fromTime.get()
+        str1 += " and time > " + fromTime.get()
 
     if (len(untilTime.get()) > 4):
-        str += " and time < " + untilTime.get()
+        str1 += " and time < " + untilTime.get()
 
     if (len(fromSpeed.get()) > 0):
-        str += " and speed > " + fromSpeed.get()
+        str1 += " and speed > " + fromSpeed.get()
 
     if (len(untilSpeed.get()) > 0):
-        str += " and speed < " + untilSpeed.get()
+        str1 += " and speed < " + untilSpeed.get()
 
-    print(str)
-    cursor.execute(str)
+    print(str1)
+    cursor.execute(str1)
 
     result = cursor.fetchall()
 
     for r in result:
+        #print(r)
         c.writerow(r)
 
     cursor.close()
@@ -76,11 +76,10 @@ def DBToCSV(event):
 
 def DBToKML(event):
     print("DB to kml")
-    connection = sqlite3.connect(DB_New_name)
+    connection = sqlite3.connect(DB_name)
     cursor = connection.cursor()
 
     # cursor.execute('SELECT * FROM info')
-
     str1 = 'SELECT * FROM info where 1==1'
     if (len(fromDate.get()) > 5):
         str1 += " and date > " + fromDate.get()
@@ -141,16 +140,11 @@ def DBToKML(event):
         f.write("\n       </description>")
         #f.write("       <description>" + str(row[0]) + "</description>\n")
 
-        # Time = row[2]
         # f.write("  <TimeStamp>\n" + "<when>" + str(row[1]) + "T" + str(Time) + "Z</when> \n</TimeStamp>\n")
         f.write("\n       <TimeStamp>" + "\n         <when>" + Date + "T" + str(Time) + "Z</when>\n         </TimeStamp>\n")
         f.write("       <Point>\n")
-        # print("lat=" + row[3])
-        # print("lon=" + row[5])
         lon = str(float(row[6][:3]) + (float(row[6][3:]) / 60))
         lat = str(float(row[4][:2]) + (float(row[4][2:]) / 60))
-        #  print(lat)
-        #  print(lon)
         a = float(row[6]) / 100
         b = float(row[4]) / 100
         f.write("           <coordinates>" + lon + "," + lat + "," + str(row[9]) + "</coordinates>\n")
@@ -173,7 +167,7 @@ def UploadFile(event):
         reader = csv.reader(DB_name)
         # flag will tell us if the GPGGA is good if yes continue to the GPRMC
         flag = 0
-    # create a csv reader object from the input file (nmea files are basically csv)
+        # create a csv reader object from the input file (nmea files are basically csv)
         for row in reader:
             # skip all lines that do not start with $GPGGA
             if not row:
@@ -206,9 +200,6 @@ def UploadFile(event):
                 continue
 
 def UI_filter(event):
-    # c.execute('SELECT * INTO zvika IN \'Backup.db\' FROM info')
-    # c.execute('CREATE TABLE copied AS SELECT * FROM info')
-    print("exit from this ui")
     button2.destroy()
     button1.destroy()
     button3.destroy()
@@ -218,7 +209,6 @@ def UI_filter(event):
     Label(None, text='from date: (like: "1/1/1990")').pack()
     date1_Entry = Entry(None, text='', textvariable=fromDate)
     date1_Entry.pack()
-
 
     Label(None, text='until date: (like: "12/12/2020")').pack()
     date2_Entry = Entry(None, text='', textvariable=untilDate)
@@ -258,6 +248,8 @@ def UI_filter(event):
     button4 = Button(None, text='save to CSV')
     button4.pack()
 
+    Label(None, text='or').pack()
+
     button5 = Button(None, text='save to KML')
     button5.pack()
 
@@ -272,8 +264,6 @@ def UI_filter(event):
     button_temp.bind('<Button>', show_var)
 
 DB_name = "nmea_db.db"
-DB_New_name = "nmea_db.db"
-# DB_New_name = "db_filter.db"
 CSV_FILE = "nmea_to_csv.csv"
 KML_File = "nmea_to_kml.kml"
 
@@ -314,9 +304,5 @@ show3 = IntVar()
 button1.bind('<Button>', UploadFile)
 button3.bind('<Button>', DropTable)
 button2.bind('<Button>', UI_filter)
-
-# v= StringVar()
-# Entry11 = Entry(None, text='', textvariable=v)
-# Entry11.pack()
 
 button1.mainloop()
