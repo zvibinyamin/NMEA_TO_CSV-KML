@@ -214,31 +214,31 @@ def UI_filter(event):
     conn.close()
 
     Label(None, text='Filter by file path: (like:"c:\\\\w1.nmea")').pack()
-    fileName_Entry = Entry(None, text='', textvariable=fileNameVar)
+    fileName_Entry = Entry(None, textvariable=fileNameVar)
     fileName_Entry.pack()
 
     Label(None, text='\nFilter by from date: (like: "1/1/1990")').pack()
-    date1_Entry = Entry(None, text='', textvariable=fromDate)
+    date1_Entry = Entry(None, textvariable=fromDate)
     date1_Entry.pack()
 
     Label(None, text='Filter by until date: (like: "12/12/2020")').pack()
-    date2_Entry = Entry(None, text='', textvariable=untilDate)
+    date2_Entry = Entry(None, textvariable=untilDate)
     date2_Entry.pack()
 
     Label(None, text='\nFilter by from hour: (like: "08:03:01")').pack()
-    hour1_Entry = Entry(None, text='', textvariable=fromTime)
+    hour1_Entry = Entry(None, textvariable=fromTime)
     hour1_Entry.pack()
 
     Label(None, text='Filter by until hour: (like: "18:59:07")').pack()
-    hour2_Entry = Entry(None, text='', textvariable=untilTime)
+    hour2_Entry = Entry(None, textvariable=untilTime)
     hour2_Entry.pack()
 
     Label(None, text='\nFilter by from speed: (like: "0.1")').pack()
-    Speed1_Entry = Entry(None, text='', textvariable=fromSpeed)
+    Speed1_Entry = Entry(None, textvariable=fromSpeed)
     Speed1_Entry.pack()
 
     Label(None, text='Filter by until speed: (like: "7.45")').pack()
-    Speed2_Entry = Entry(None, text='', textvariable=untilSpeed)
+    Speed2_Entry = Entry(None, textvariable=untilSpeed)
     Speed2_Entry.pack()
 
     Text1 = LabelFrame(None, text="\nshow?")
