@@ -1,3 +1,10 @@
+About the project:
+=============
+Software that accepts NMEA files.
+The software saves all data and gives the user an option to filter by file name, dates, times or location
+And view them using google earth or excel (CSV or KML accordingly)
+
+----------
 
 Instructions:
 
