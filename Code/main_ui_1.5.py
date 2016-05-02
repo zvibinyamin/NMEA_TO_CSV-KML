@@ -16,7 +16,9 @@ def DropTable(event):
                             (fileName text,date date,time time,speed float, latitude text, latitude_direction text, longitude text, longitude_direction text,fix text,horizontal_dilution text,altitude text,direct_of_altitude text,altitude_location text)''')
 
 def show_var(event):
-    print("\n----\nfromDate " + fromDate.get())
+    print("\n----\nfileNameVar " + fileNameVar.get())
+    print("fromDate " + fromDate.get())
+
     print("untilDate " + untilDate.get())
     print("fromTime " + fromTime.get())
     print("untilTime " + untilTime.get())
@@ -26,6 +28,7 @@ def show_var(event):
     print("show date? " + str(show1.get()))
     print("show time? " + str(show2.get()))
     print("show speed? " + str(show3.get()))
+
 
 def DBToCSV(event):
     print("DB to csv")
@@ -43,6 +46,9 @@ def DBToCSV(event):
 
     # cursor.execute('SELECT * FROM info')
     str1 = 'SELECT * FROM info where 1==1'
+    if (len(fileNameVar.get()) > 3):
+        str1 += " and fileName LIKE  \"%" + fileNameVar.get()+"\""
+
     if (len(fromDate.get()) > 5):
         str1 += " and date > " + fromDate.get()
 
@@ -206,27 +212,32 @@ def UI_filter(event):
 
 
     conn.close()
-    Label(None, text='from date: (like: "1/1/1990")').pack()
+
+    Label(None, text='Filter by file path: (like:"c:\\\\w1.nmea")').pack()
+    fileName_Entry = Entry(None, text='', textvariable=fileNameVar)
+    fileName_Entry.pack()
+
+    Label(None, text='\nFilter by from date: (like: "1/1/1990")').pack()
     date1_Entry = Entry(None, text='', textvariable=fromDate)
     date1_Entry.pack()
 
-    Label(None, text='until date: (like: "12/12/2020")').pack()
+    Label(None, text='Filter by until date: (like: "12/12/2020")').pack()
     date2_Entry = Entry(None, text='', textvariable=untilDate)
     date2_Entry.pack()
 
-    Label(None, text='\nfrom hour: (like: "08:03:01")').pack()
+    Label(None, text='\nFilter by from hour: (like: "08:03:01")').pack()
     hour1_Entry = Entry(None, text='', textvariable=fromTime)
     hour1_Entry.pack()
 
-    Label(None, text='until hour: (like: "18:59:07")').pack()
+    Label(None, text='Filter by until hour: (like: "18:59:07")').pack()
     hour2_Entry = Entry(None, text='', textvariable=untilTime)
     hour2_Entry.pack()
 
-    Label(None, text='\nfrom speed: (like: "0.1")').pack()
+    Label(None, text='\nFilter by from speed: (like: "0.1")').pack()
     Speed1_Entry = Entry(None, text='', textvariable=fromSpeed)
     Speed1_Entry.pack()
 
-    Label(None, text='until speed: (like: "7.45")').pack()
+    Label(None, text='Filter by until speed: (like: "7.45")').pack()
     Speed2_Entry = Entry(None, text='', textvariable=untilSpeed)
     Speed2_Entry.pack()
 
@@ -286,7 +297,7 @@ button1.pack()
 button2 = Button(None, text ="Continue to the next step - Data filtering")
 button2.pack()
 
-Label1 = Label(None, text='\n').pack()
+Label1 = Label(None, text='').pack()
 
 button3 = Button(None, text='Clear DB')
 button3.pack()
@@ -297,6 +308,7 @@ fromTime = StringVar()
 untilTime = StringVar()
 fromSpeed = StringVar()
 untilSpeed = StringVar()
+fileNameVar = StringVar()
 show1 = IntVar()
 show2 = IntVar()
 show3 = IntVar()
