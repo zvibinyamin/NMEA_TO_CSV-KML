@@ -13,7 +13,7 @@ def DropTable(event):
     c.execute('DROP TABLE IF EXISTS info')
     # Create table
     c.execute('''CREATE TABLE info
-                            (fileName text,date date,time time,speed float, latitude text, latitude_direction text, longitude text, longitude_direction text,fix text,horizontal_dilution text,altitude text,direct_of_altitude text,altitude_location text)''')
+                            (fileName text,date date,time time,speed float, latitude text, latitude_direction text, longitude text, longitude_direction text,fix text,horizontal_dilution text,altitude text,direct_of_altitude text,altitude_location text,dateint int)''')
 
 def show_var(event):
     print("\n----\nfileNameVar " + fileNameVar.get())
@@ -49,11 +49,11 @@ def DBToCSV(event):
     if (len(fileNameVar.get()) > 3):
         str1 += " and fileName LIKE  \"%" + fileNameVar.get()+"\""
 
-    if (len(fromDate.get()) > 5):
-        str1 += " and date > \'" + fromDate.get() + "\'"
+    if (len(fromDate.get()) == 8):
+        str1 += " and dateint > " + fromDate.get()
 
-    if (len(untilDate.get()) > 5):
-        str1 += " and date < \'" + untilDate.get() + "\'"
+    if (len(untilDate.get()) == 8):
+        str1 += " and dateint < " + untilDate.get()
 
     if (len(fromTime.get()) > 4):
         str1 += " and time > \'" + fromTime.get() + "\'"
@@ -87,13 +87,14 @@ def DBToKML(event):
 
     # cursor.execute('SELECT * FROM info')
     str1 = 'SELECT * FROM info where 1==1'
+    if (len(fileNameVar.get()) > 3):
+        str1 += " and fileName LIKE  \"%" + fileNameVar.get()+"\""
 
+    if (len(fromDate.get()) == 8):
+        str1 += " and dateint > " + fromDate.get()
 
-    if (len(fromDate.get()) > 5):
-        str1 += " and date > " + fromDate.get()
-
-    if (len(untilDate.get()) > 5):
-        str1 += " and date < " + untilDate.get()
+    if (len(untilDate.get()) == 8):
+        str1 += " and dateint < " + untilDate.get()
 
     if (len(fromTime.get()) > 4):
         str1 += " and time > \'" + fromTime.get() + "\'"
@@ -197,17 +198,27 @@ def UploadFile(event):
                 month = str(rowStr[2:4])
                 year = str(rowStr[4:6])
 
-                if (year.isdigit() & int(year) > 30):
-                    date = day + "/" + month + "/19" + year
+                if(year.isdigit() & int(year) > 30):
+                    year ="19" + year
                 else:
-                    date = day + "/" + month + "/20" + year
+                    year = "20" + year
 
+                date = day + "/" + month + "/" + year
+
+                if(len(month)==1 & len(day)==1):
+                    date_int = year + "0" + month + "0" + day
+                elif(len(month)==1):
+                    date_int = year + "0" + month + "" + day
+                elif(len(day)==1):
+                    date_int = year + "" + month + "0" + day
+                else:
+                    date_int = year + "" + month + "" + day
                 warning = row[2]
                 if warning == 'V':
                     continue
-                c.execute("INSERT INTO info VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)", (
+                c.execute("INSERT INTO info VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)", (
                     file_path, date, time, speed, latitude, lat_direction, longitude, lon_direction, fix, horizontal, altitude,
-                    direct_altitude, altitude_location))
+                    direct_altitude, altitude_location,date_int))
                 # Save (commit) the changes
                 conn.commit()
                 flag = 0
@@ -226,19 +237,19 @@ def UI_filter(event):
     fileName_Entry = Entry(None, textvariable=fileNameVar)
     fileName_Entry.pack()
 
-    Label(None, text='\nFilter by from date: (like: "1/1/1990")').pack()
+    Label(None, text='\nFilter by from date: (like: "YYYYMMDD")').pack()
     date1_Entry = Entry(None, textvariable=fromDate)
     date1_Entry.pack()
 
-    Label(None, text='Filter by until date: (like: "12/12/2020")').pack()
+    Label(None, text='Filter by until date: (like: "YYYYMMDD")').pack()
     date2_Entry = Entry(None, textvariable=untilDate)
     date2_Entry.pack()
 
-    Label(None, text='\nFilter by from hour: (like: "08:03:01")').pack()
+    Label(None, text='\nFilter by from hour: (like: "HH:MM:SS")').pack()
     hour1_Entry = Entry(None, textvariable=fromTime)
     hour1_Entry.pack()
 
-    Label(None, text='Filter by until hour: (like: "18:59:07")').pack()
+    Label(None, text='Filter by until hour: (like: "HH:MM:SS")').pack()
     hour2_Entry = Entry(None, textvariable=untilTime)
     hour2_Entry.pack()
 
@@ -294,7 +305,7 @@ if (os.path.isfile(DB_name) == 0):
     c.execute('DROP TABLE IF EXISTS info')
     # Create table
     c.execute('''CREATE TABLE info
-                        (fileName text,date date,time time,speed float, latitude text, latitude_direction text, longitude text, longitude_direction text,fix text,horizontal_dilution text,altitude text,direct_of_altitude text,altitude_location text)''')
+                            (fileName text,date date,time time,speed float, latitude text, latitude_direction text, longitude text, longitude_direction text,fix text,horizontal_dilution text,altitude text,direct_of_altitude text,altitude_location text,dateint int)''')
 else:
     # create database
     conn = sqlite3.connect(DB_name)
