@@ -16,7 +16,7 @@ Instructions:
 
 1. Download the project to the your computer.
 
-2. Run the file using python: "\Code\main.py".
+2. Run the file using python: "\Code\Main.py".
 
 ----------
 
