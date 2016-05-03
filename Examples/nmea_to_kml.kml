@@ -1,0 +1,550 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<kml xmlns='http://earth.google.com/kml/2.1'>
+<Document>
+   <name>to_kml.kml</name>
+   <Placemark>
+       <name> point_1</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:06:47:48</p>
+           <p>Speed: 0.0</p>
+           <p>Location: 3210.740342N 03452.872539E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T06:47:48Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.88120898333333,32.1790057,08</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_2</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:06:47:59</p>
+           <p>Speed: 1.7</p>
+           <p>Location: 3210.755869N 03452.876982E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T06:47:59Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.88128303333333,32.179264483333334,06</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_3</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:06:49:06</p>
+           <p>Speed: 2.6</p>
+           <p>Location: 3210.763699N 03452.836791E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T06:49:06Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.88061318333333,32.17939498333333,07</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_4</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:06:50:10</p>
+           <p>Speed: 3.5</p>
+           <p>Location: 3210.772112N 03452.767434E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T06:50:10Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.87945723333333,32.1795352,04</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_5</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:06:51:36</p>
+           <p>Speed: 2.6</p>
+           <p>Location: 3210.775617N 03452.687483E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T06:51:36Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.87812471666667,32.179593616666665,07</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_6</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:06:52:43</p>
+           <p>Speed: 2.2</p>
+           <p>Location: 3210.805320N 03452.634493E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T06:52:43Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.87724155,32.18008866666667,06</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_7</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:06:53:47</p>
+           <p>Speed: 2.8</p>
+           <p>Location: 3210.818692N 03452.575090E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T06:53:47Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.8762515,32.18031153333333,07</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_8</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:06:56:01</p>
+           <p>Speed: 1.9</p>
+           <p>Location: 3210.823777N 03452.466577E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T06:56:01Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.87444295,32.18039628333333,07</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_9</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:06:57:06</p>
+           <p>Speed: 2.6</p>
+           <p>Location: 3210.850556N 03452.403294E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T06:57:06Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.87338823333333,32.1808426,07</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_10</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:06:58:12</p>
+           <p>Speed: 2.8</p>
+           <p>Location: 3210.859236N 03452.346293E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T06:58:12Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.872438216666666,32.18098726666667,08</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_11</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:06:59:32</p>
+           <p>Speed: 1.9</p>
+           <p>Location: 3210.838146N 03452.281807E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T06:59:32Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.87136345,32.18063576666667,06</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_12</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:12:35:23</p>
+           <p>Speed: 0.0</p>
+           <p>Location: 3210.804579N 03452.209893E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T12:35:23Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.87016488333333,32.180076316666664,08</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_13</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:12:37:12</p>
+           <p>Speed: 1.9</p>
+           <p>Location: 3210.836950N 03452.197729E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T12:37:12Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.86996215,32.180615833333334,07</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_14</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:12:38:16</p>
+           <p>Speed: 3.1</p>
+           <p>Location: 3210.842743N 03452.228094E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T12:38:16Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.870468233333334,32.180712383333336,07</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_15</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:12:39:39</p>
+           <p>Speed: 2.8</p>
+           <p>Location: 3210.881705N 03452.265768E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T12:39:39Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.87109613333333,32.18136175,08</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_16</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:12:40:43</p>
+           <p>Speed: 3.2</p>
+           <p>Location: 3210.852921N 03452.333211E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T12:40:43Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.87222018333333,32.180882016666665,08</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_17</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:12:41:47</p>
+           <p>Speed: 3.2</p>
+           <p>Location: 3210.836749N 03452.394981E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T12:41:47Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.873249683333334,32.180612483333334,09</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_18</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:12:42:50</p>
+           <p>Speed: 2.6</p>
+           <p>Location: 3210.825129N 03452.451836E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T12:42:50Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.87419726666667,32.180418816666666,08</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_19</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:12:43:55</p>
+           <p>Speed: 0.0</p>
+           <p>Location: 3210.835482N 03452.485130E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T12:43:55Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.87475216666667,32.18059136666667,07</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_20</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:12:44:58</p>
+           <p>Speed: 0.0</p>
+           <p>Location: 3210.832359N 03452.537635E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T12:44:58Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.87562725,32.18053931666667,08</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_21</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:12:46:06</p>
+           <p>Speed: 4.8</p>
+           <p>Location: 3210.809179N 03452.610698E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T12:46:06Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.87684496666667,32.180152983333336,08</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_22</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:12:47:10</p>
+           <p>Speed: 1.4</p>
+           <p>Location: 3210.869184N 03452.615427E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T12:47:10Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.87692378333333,32.18115306666667,06</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_23</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:12:48:13</p>
+           <p>Speed: 2.6</p>
+           <p>Location: 3210.902128N 03452.650896E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T12:48:13Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.87751493333333,32.18170213333333,07</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_24</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:12:49:17</p>
+           <p>Speed: 2.9</p>
+           <p>Location: 3210.965815N 03452.649262E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T12:49:17Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.8774877,32.18276358333333,07</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_25</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:12:50:21</p>
+           <p>Speed: 2.1</p>
+           <p>Location: 3211.020446N 03452.679133E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T12:50:21Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.87798555,32.1836741,07</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_26</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:12:51:27</p>
+           <p>Speed: 4.0</p>
+           <p>Location: 3211.093627N 03452.688017E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T12:51:27Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.878133616666666,32.18489378333334,05</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_27</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:12:52:32</p>
+           <p>Speed: 3.1</p>
+           <p>Location: 3211.050618N 03452.749241E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T12:52:32Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.87915401666667,32.18417696666667,07</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_28</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:12:53:35</p>
+           <p>Speed: 2.8</p>
+           <p>Location: 3211.039163N 03452.820731E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T12:53:35Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.880345516666665,32.18398605,06</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_29</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:12:54:38</p>
+           <p>Speed: 3.0</p>
+           <p>Location: 3211.031533N 03452.877351E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T12:54:38Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.88128918333334,32.183858883333336,08</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_30</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:12:55:42</p>
+           <p>Speed: 3.4</p>
+           <p>Location: 3211.011106N 03452.929125E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T12:55:42Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.88215208333333,32.18351843333333,09</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_31</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:12:57:05</p>
+           <p>Speed: 2.3</p>
+           <p>Location: 3210.941228N 03452.944576E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T12:57:05Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.8824096,32.1823538,05</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_32</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:12:58:08</p>
+           <p>Speed: 2.0</p>
+           <p>Location: 3210.914119N 03452.993204E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T12:58:08Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.88322006666667,32.18190198333333,05</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_33</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:12:59:11</p>
+           <p>Speed: 2.5</p>
+           <p>Location: 3210.875161N 03452.999152E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T12:59:11Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.8833192,32.181252683333334,09</coordinates>
+       </Point>
+   </Placemark>
+   <Placemark>
+       <name> point_34</name>
+       <description>
+           <p>Date:2016-05-03</p>
+           <p>Time:13:00:15</p>
+           <p>Speed: 1.9</p>
+           <p>Location: 3210.822901N 03452.977380E</p>
+           <p>file_name: C:/Users/Zvika1/Downloads/20160503.nmea</p>
+       </description>
+       <TimeStamp>
+         <when>2016-05-03T13:00:15Z</when>
+         </TimeStamp>
+       <Point>
+           <coordinates>34.88295633333333,32.18038168333333,06</coordinates>
+       </Point>
+   </Placemark>
+</Document>
+</kml>
