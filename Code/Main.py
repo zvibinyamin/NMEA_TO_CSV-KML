@@ -42,7 +42,7 @@ def DBToCSV(event):
 
     c.writerow(
         ['fileName','Date', 'Time', 'Speed', 'Latitude', 'Lat_direction', 'Longitude', 'Lon_direction', 'Fix', 'Horizontal',
-         'Altitude', 'Direct_altitude', 'Altitude_location'])
+         'Altitude', 'Direct_altitude', 'Altitude_location', 'Date_int'])
 
     connection = sqlite3.connect(DB_name)
 
