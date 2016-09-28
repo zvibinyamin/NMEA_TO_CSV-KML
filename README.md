@@ -1,6 +1,10 @@
 converter NMEA file to CSV file and KML file:
 =============
 
+<p align="center">
+  <img src="https://github.com/zvibinyamin/Nmea-to-csv-kml/blob/master/Examples/NMEA%20project.jpg?raw=true" width="600"/>
+</p>
+
 About the project:
 =============
 Software that accepts NMEA files.
