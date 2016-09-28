@@ -12,7 +12,7 @@ The software saves all data and gives the user an option to filter by file name,
 And view them using google earth or excel (CSV or KML accordingly)
 
 
-See Project presentations(UML,..):
+UML:
 =============
 https://github.com/zvibinyamin/Nmea-to-csv-kml/blob/master/NMEA%20project.pdf
 
