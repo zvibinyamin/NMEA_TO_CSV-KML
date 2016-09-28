@@ -10,7 +10,7 @@ And view them using google earth or excel (CSV or KML accordingly)
 
 See Project presentations(UML,..):
 =============
-https://drive.google.com/file/d/0B3ALaSWJaKjodEQyT0xNWTA0bTg/view?usp=sharing 
+https://github.com/zvibinyamin/Nmea-to-csv-kml/blob/master/NMEA%20project.pdf
 
 ----------
 
