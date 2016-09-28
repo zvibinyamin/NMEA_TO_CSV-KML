@@ -1,3 +1,6 @@
+converter NMEA file to CSV file and KML file:
+=============
+
 About the project:
 =============
 Software that accepts NMEA files.
