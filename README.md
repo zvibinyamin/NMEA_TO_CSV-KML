@@ -1,4 +1,4 @@
-Converter NMEA file to CSV file and KML file:
+Converter NMEA files to CSV or KML files:
 =============
 
 <p align="center">
